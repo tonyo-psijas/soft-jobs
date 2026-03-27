@@ -33,7 +33,7 @@ const Register = () => {
       return window.alert('El formato del email no es correcto!')
     }
 
-    axios.post(ENDPOINT.users, user)
+    axios.post(ENDPOINT.register, user)
       .then(() => {
         window.alert('Usuario registrado con éxito 😀.')
         navigate('/login')

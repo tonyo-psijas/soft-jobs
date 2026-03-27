@@ -10,7 +10,10 @@ const Home = () => {
     const token = window.sessionStorage.getItem('token')
     if (token) {
       axios.get(ENDPOINT.users, { headers: { Authorization: `Bearer ${token}` } })
-        .then(({ data: [user] }) => setDeveloper({ ...user }))
+        .then(({ data }) => {
+          const user = data.users[0]
+          setDeveloper({ ...user })
+        })
         .catch(() => {
           window.sessionStorage.removeItem('token')
           setDeveloper(null)
